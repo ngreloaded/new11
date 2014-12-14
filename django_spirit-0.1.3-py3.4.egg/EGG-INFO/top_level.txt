@@ -1,0 +1,5 @@
+spirit
+essay
+quiz
+multichoice
+true_false
