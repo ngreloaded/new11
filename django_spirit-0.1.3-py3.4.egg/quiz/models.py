@@ -8,7 +8,7 @@ from django.core.validators import MaxValueValidator
 from django.utils.translation import ugettext as _
 from django.utils.timezone import now
 from django.utils.encoding import python_2_unicode_compatible
-
+from spirit.models.user import User as userModel 
 from model_utils.managers import InheritanceManager
 
 
@@ -188,7 +188,7 @@ class Progress(models.Model):
     Data stored in csv using the format:
         category, score, possible, category, score, possible, ...
     """
-    user = models.OneToOneField("auth.User", verbose_name=_("User"))
+    user = models.OneToOneField("userModel", verbose_name=_("User"))
 
     score = models.CommaSeparatedIntegerField(max_length=1024,
                                               verbose_name=_("Score"))
@@ -361,7 +361,7 @@ class Sitting(models.Model):
     with the answer the user gave.
     """
 
-    user = models.ForeignKey('auth.User', verbose_name=_("User"))
+    user = models.ForeignKey('userModel', verbose_name=_("User"))
 
     quiz = models.ForeignKey(Quiz, verbose_name=_("Quiz"))
 
